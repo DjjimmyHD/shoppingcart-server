@@ -4,6 +4,7 @@ const helmet = require('helmet')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const port = process.env.PORT || '3000'
+const users = require('./api/users')
 
 const app = express()
 
@@ -14,6 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
 app.get('/', (req, res, next) => res.send('🎡we out here'))
+
+app.use('/api/vi/users', users)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
